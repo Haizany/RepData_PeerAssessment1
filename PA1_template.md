@@ -90,13 +90,6 @@ median(StepsByDay$steps , na.rm = TRUE)
 
 
 
-```
-## [1] 9354.23
-```
-
-```
-## [1] 10395
-```
 Mean total number of steps taken per day is 9354.2295082 <br>
 Median total number of steps taken per day is 10395
 
@@ -131,7 +124,7 @@ AvgStepLine
 
 
 ```r
-#The 5-min time interval contains the maximum number of steps?
+#The 5-min time interval which contains the maximum number of steps?
 AvgStepsByInterval[which.max(AvgStepsByInterval$steps),c("interval")]
 ```
 
@@ -141,19 +134,21 @@ AvgStepsByInterval[which.max(AvgStepsByInterval$steps),c("interval")]
 
 
 
-The 5-min time interval contains the maximum number of steps is 835
+The 5-min time interval which contains the maximum number of steps is 835
 
 ## Imputing missing values
 
 ```r
 # calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
-#total number of missing values in the dataset
+# total number of missing values in the dataset
 nrow(MyData[is.na(MyData$steps),])
 ```
 
 ```
 ## [1] 2304
 ```
+
+The total number of missing values in the dataset is 2304
 
 ```r
 # devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated.  For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
@@ -221,7 +216,7 @@ histplot <- ggplot(StepsByDay,aes(x = steps)) +
 histplot
 ```
 
-![plot of chunk unnamed-chunk-7](figure/unnamed-chunk-7-1.png) 
+![plot of chunk unnamed-chunk-9](figure/unnamed-chunk-9-1.png) 
 
 
 ```r
@@ -272,5 +267,5 @@ AverageStep <- ggplot(AvgStepsByInterval.weekday,aes(interval,steps)) +
 AverageStep  
 ```
 
-![plot of chunk unnamed-chunk-10](figure/unnamed-chunk-10-1.png) 
+![plot of chunk unnamed-chunk-12](figure/unnamed-chunk-12-1.png) 
 

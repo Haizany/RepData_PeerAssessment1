@@ -41,10 +41,10 @@ median(StepsByDay$steps , na.rm = TRUE)
 ```{r echo=FALSE}
 #mean total number of steps taken per day
 MeanStepsByDay <- mean(StepsByDay$steps , na.rm = TRUE)
-MeanStepsByDay
+
 #median total number of steps taken per day
 MedianStep <- median(StepsByDay$steps , na.rm = TRUE)
-MedianStep
+
 ```
 Mean total number of steps taken per day is `r MeanStepsByDay` <br>
 Median total number of steps taken per day is `r MedianStep`
@@ -64,7 +64,7 @@ AvgStepLine
 ```
 
 ```{r}
-#The 5-min time interval contains the maximum number of steps?
+#The 5-min time interval which contains the maximum number of steps?
 AvgStepsByInterval[which.max(AvgStepsByInterval$steps),c("interval")]
 ```
 
@@ -72,14 +72,19 @@ AvgStepsByInterval[which.max(AvgStepsByInterval$steps),c("interval")]
 MaxStep <- AvgStepsByInterval[which.max(AvgStepsByInterval$steps),c("interval")]
 ```
 
-The 5-min time interval contains the maximum number of steps is `r MaxStep`
+The 5-min time interval which contains the maximum number of steps is `r MaxStep`
 
 ## Imputing missing values
 ```{r}
 # calculate and report the total number of missing values in the dataset (i.e. the total number of rows with NAs)
-#total number of missing values in the dataset
+# total number of missing values in the dataset
 nrow(MyData[is.na(MyData$steps),])
-
+```
+```{r echo=FALSE}
+MissingV <- nrow(MyData[is.na(MyData$steps),])
+```
+The total number of missing values in the dataset is `r MissingV`
+```{r}
 # devise a strategy for filling in all of the missing values in the dataset. The strategy does not need to be sophisticated.  For example, you could use the mean/median for that day, or the mean for that 5-minute interval, etc.
 #Strategy: imputing missing step values with mean step for the 5-minute interval
 MyData.imputed <- merge(x = MyData, y = AvgStepsByInterval, by = "interval", all.x = TRUE)
